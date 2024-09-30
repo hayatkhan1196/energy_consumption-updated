@@ -1,0 +1,1083 @@
+<!DOCTYPE html>
+<html lang="en" style=" background: #f3f4f4;">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta
+      name="description"
+      content="Web site created using create-react-app"
+    />
+    <!-- <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"> -->
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css"
+        integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We"
+        crossorigin="anonymous"
+    />
+     <script type="text/javascript" src="https://cdn.canvasjs.com/canvasjs.min.js"></script>
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDsNytQySdV_bOGyy7BPJBHJf5aRAKZmh8&libraries=geometry,drawing,places&sensor=true_or_false"></script>
+    <!-- <script
+                                                    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDsNytQySdV_bOGyy7BPJBHJf5aRAKZmh8&libraries=places"></script>
+                                                                                                 -->
+
+    <!--
+      manifest.json provides metadata used when your web app is installed on a
+      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
+    -->
+    <script src="https://unpkg.com/mqtt/dist/mqtt.min.js"></script>
+
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <!--
+      Notice the use of %PUBLIC_URL% in the tags above.
+      It will be replaced with the URL of the `public` folder during the build.
+      Only files inside the `public` folder can be referenced from the HTML.
+
+      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
+      work correctly both with client-side routing and a non-root public URL.
+      Learn how to configure a non-root public URL by running `npm run build`.
+    -->
+    <script type="text/javascript">
+        (function(l) {
+          if (l.search[1] === '/' ) {
+            var decoded = l.search.slice(1).split('&').map(function(s) { 
+              return s.replace(/~and~/g, '&')
+            }).join('?');
+            window.history.replaceState(null, null,
+                l.pathname.slice(0, -1) + decoded + l.hash
+            );
+          }
+        }(window.location))
+      </script>
+    <title>Energy Consumption</title>
+  </head>
+  <body>
+    <style>
+      @font-face {
+      font-family: 'Geogrotesque';
+      src: url('./fonts/Geogrotesque-Regulard41d.eot?#iefix') format('embedded-opentype'), url('./assets/fonts/Geogrotesque-Regular.woff') format('woff'), url('./assets/fonts/Geogrotesque-Regular.ttf') format('truetype'), url('./assets/fonts/Geogrotesque-Regular.svg#Geogrotesque-Regular') format('svg');
+      font-weight: 400;
+      font-style: normal;
+  }
+  
+  @font-face {
+      font-family: 'Geogrotesque';
+      src: url('./assets/fonts/Geogrotesque-Mediumd41d.eot?#iefix') format('embedded-opentype'), url('./assets/fonts/Geogrotesque-Medium.woff') format('woff'), url('./assets/fonts/Geogrotesque-Medium.ttf') format('truetype'), url('./assets/fonts/Geogrotesque-Medium.svg#Geogrotesque-Medium') format('svg');
+      font-weight: 500;
+      font-style: normal;
+  }
+  
+  @font-face {
+      font-family: 'Geogrotesque';
+      src: url('./assets/fonts/Geogrotesque-SemiBoldd41d.eot#iefix') format('embedded-opentype'), url('./assets/fonts/Geogrotesque-SemiBold.woff') format('woff'), url('./assets/fonts/Geogrotesque-SemiBold.ttf') format('truetype'), url('./assets/fonts/Geogrotesque-SemiBold.svg#Geogrotesque-SemiBold') format('svg');
+      font-weight: 600;
+      font-style: normal;
+  }
+  
+   @font-face {
+      font-family: 'arca_majora';
+      src: url('./assets/fonts/arcamajora3-bold-webfont.html') format('woff2'), url('./assets/fonts/arcamajora3-bold-webfont.woff') format('woff');
+      font-weight: normal;
+      font-style: normal;
+  }  
+
+  /* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey; 
+  border-radius: 10px;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #E93380; 
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #eb2879; 
+}
+  
+  body {
+      font-family: 'Geogrotesque';
+      font-size: 14px;
+      line-height: 24px;
+      color: #323233;
+      font-weight: 400;
+      font-style: normal;
+      background-color: #fff;
+      -webkit-animation: fadein 4s;
+      -moz-animation: fadein 4s;
+      -ms-animation: fadein 4s;
+      -o-animation: fadein 4s;
+      animation: fadein 4s;
+  }
+  
+  @keyframes fadein {
+      from {
+          opacity: 0;
+      }
+      to {
+          opacity: 1;
+      }
+  }
+  
+  @-moz-keyframes fadein {
+      /* Firefox */
+      from {
+          opacity: 0;
+      }
+      to {
+          opacity: 1;
+      }
+  }
+  
+  @-webkit-keyframes fadein {
+      /* Safari and Chrome */
+      from {
+          opacity: 0;
+      }
+      to {
+          opacity: 1;
+      }
+  }
+  
+  @-o-keyframes fadein {
+      /* Opera */
+      from {
+          opacity: 0;
+      }
+      to {
+          opacity: 1;
+      }
+  }
+  
+  a {
+      color: #0eacf3;
+      font-size: 13px;
+      text-decoration: none;
+  }
+  
+  a:hover {
+      color: #098eca;
+      text-decoration: none;
+  }
+  
+  a,
+  .nav-tabs>li>a {
+      text-decoration: none;
+  }
+  
+  a:hover,
+  .nav-tabs>li>a:hover {
+      text-decoration: none;
+  }
+  
+  a:hover,
+  .nav-tabs>li>a:hover,
+  .btn {
+      -webkit-transition: all 0.5s ease;
+      -moz-transition: all 0.5s ease;
+      -ms-transition: all 0.5s ease;
+      transition: all 0.5s ease;
+  }
+  
+  a:focus {
+      outline: none;
+  }
+  
+  h1,
+  .h2,
+  .h3,
+  .h4,
+  .h5,
+  .h6,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+      margin: 10px 0px;
+  }
+  
+  li {
+      line-height: 20px;
+  }
+  
+  p {
+      font-size: 14px;
+      font-weight: normal;
+      line-height: 30px;
+      margin-bottom: 10px;
+  }
+  
+  ul,
+  ol {
+      margin: 0px;
+      padding: 0px;
+      list-style: none;
+  }
+  
+  h1,
+  h2 {
+      line-height: 35px;
+  }
+  
+  h1 {
+      font-size: 32px;
+      line-height: 40px;
+  }
+  
+  h2 {
+      font-size: 42px;
+  }
+  
+  h3 {
+      font-size: 22px;
+  }
+  
+  h4 {
+      font-size: 16px;
+  }
+  
+  h5 {
+      font-size: 14px;
+  }
+  
+  h6 {
+      font-size: 11.9px;
+  }
+  
+  .clear {
+      clear: both;
+  }
+  
+  .center,
+  .center-responsive img,
+  .center img,
+  .center-responsive img img,
+  .center-responsive {
+      text-align: center;
+  }
+  
+  .center-responsive img {
+      margin: 0px auto;
+  }
+  
+  .position-relative {
+      position: relative;
+  }
+  
+  .cn_item i {
+      display: inline-block;
+      margin-right: 0px;
+      margin-top: 0px;
+      padding: 0px;
+      position: relative;
+      text-align: center;
+      top: 0;
+      vertical-align: middle;
+  }
+  
+  .text-primary {
+      color: #95c11f !important;
+  }
+  
+  .text-secondary {
+      color: #e93380 !important;
+  }
+  
+  .transition-all {
+      -webkit-transition: all 300ms ease 0s;
+      -moz-transition: all 300ms ease 0s;
+      -ms-transition: all 300ms ease 0s;
+      transition: all 300ms ease 0s;
+  }
+  
+  .float-right-right {
+      float: right;
+  }
+  
+  .full-width-float,
+  .float-left-left {
+      float: left;
+  }
+  
+  .full-width-inblocks {
+      display: inline-block;
+  }
+  
+  .full-width-blocks {
+      display: block;
+  }
+  
+  .full-width-float,
+  .full-width-inblocks,
+  .full-width-blocks {
+      width: 100%;
+  }
+  
+  .float-off {
+      float: none !important;
+  }
+  
+  .white-color {
+      color: #fff;
+  }
+  
+  .blue-color {
+      color: #09bce8 !important;
+  }
+  
+  .red-color {
+      color: #f05154 !important;
+  }
+  
+  .btn.active.focus,
+  .btn.active:focus,
+  .btn.focus,
+  .btn:active.focus,
+  .btn:active:focus,
+  .btn:focus {
+      outline: none;
+      outline-offset: -2px;
+  }
+  
+  .btn-info {
+      background-color: #95c11f;
+      border-color: #95c11f;
+      color: #fff;
+  }
+  
+  .btn-info.focus,
+  .btn-info:focus {
+      background-color: #88b216;
+      border-color: #88b216;
+      color: #fff;
+  }
+  
+  .btn-info:hover {
+      background-color: #88b216;
+      border-color: #88b216;
+      color: #fff;
+  }
+  
+  .btn-info.active,
+  .btn-info:active,
+  .open>.dropdown-toggle.btn-info {
+      color: #fff;
+      background-color: #88b216;
+      border-color: #88b216;
+  }
+  
+  .btn-info.active.focus,
+  .btn-info.active:focus,
+  .btn-info.active:hover,
+  .btn-info.focus:active,
+  .btn-info:active:focus,
+  .btn-info:active:hover,
+  .open>.dropdown-toggle.btn-info.focus,
+  .open>.dropdown-toggle.btn-info:focus,
+  .open>.dropdown-toggle.btn-info:hover {
+      background-color: #df3b3e;
+      border-color: #df3b3e;
+      color: #fff;
+  }
+  
+  .btn-primary {
+      background-color: #e93380;
+      border-color: #e93380;
+      color: #fff;
+  }
+  
+  .btn-primary.focus,
+  .btn-primary:focus {
+      background-color: #f72194;
+      border-color: #f72194;
+      color: #fff;
+  }
+  
+  .btn-primary:hover {
+      background-color: #f72194;
+      border-color: #f72194;
+      color: #fff;
+  }
+  
+  .btn-primary.active,
+  .btn-primary:active,
+  .open>.dropdown-toggle.btn-primary {
+      background-color: #f72194;
+      border-color: #f72194;
+      color: #fff;
+  }
+  
+  .btn-primary.active.focus,
+  .btn-primary.active:focus,
+  .btn-primary.active:hover,
+  .btn-primary.focus:active,
+  .btn-primary:active:focus,
+  .btn-primary:active:hover,
+  .open>.dropdown-toggle.btn-primary.focus,
+  .open>.dropdown-toggle.btn-primary:focus,
+  .open>.dropdown-toggle.btn-primary:hover {
+      background-color: #f72194;
+      border-color: #f72194;
+      color: #fff;
+  }
+  
+  .btn-primary.disabled.focus,
+  .btn-primary.disabled:focus,
+  .btn-primary.disabled:hover,
+  .btn-primary.focus[disabled],
+  .btn-primary[disabled]:focus,
+  .btn-primary[disabled]:hover,
+  fieldset[disabled] .btn-primary.focus,
+  fieldset[disabled] .btn-primary:focus,
+  fieldset[disabled] .btn-primary:hover {
+      background-color: #098eca;
+      border-color: #098eca;
+  }
+  
+  .btn-default {
+      background-color: #fff;
+      border-color: #959595;
+      color: #000000;
+  }
+  
+  .wrap-full-show {
+      display: block;
+  }
+  
+  /* new main css */
+  /* @font-face {
+      font-family: 'Geogrotesque';
+      src: url('../fonts/Geogrotesque-Regular.eot?#iefix') format('embedded-opentype'), url('../fonts/Geogrotesque-Regular.woff') format('woff'), url('../fonts/Geogrotesque-Regular.ttf') format('truetype'), url('../fonts/Geogrotesque-Regular.svg#Geogrotesque-Regular') format('svg');
+      font-weight: 400;
+      font-style: normal;
+  }
+  
+  @font-face {
+      font-family: 'Geogrotesque';
+      src: url('../fonts/Geogrotesque-Medium.eot?#iefix') format('embedded-opentype'), url('../fonts/Geogrotesque-Medium.woff') format('woff'), url('../fonts/Geogrotesque-Medium.ttf') format('truetype'), url('../fonts/Geogrotesque-Medium.svg#Geogrotesque-Medium') format('svg');
+      font-weight: 500;
+      font-style: normal;
+  }
+  
+  @font-face {
+      font-family: 'Geogrotesque';
+      src: url('../fonts/Geogrotesque-SemiBold.eot?#iefix') format('embedded-opentype'), url('../fonts/Geogrotesque-SemiBold.woff') format('woff'), url('../fonts/Geogrotesque-SemiBold.ttf') format('truetype'), url('../fonts/Geogrotesque-SemiBold.svg#Geogrotesque-SemiBold') format('svg');
+      font-weight: 600;
+      font-style: normal;
+  }
+  
+  @font-face {
+      font-family: 'arca_majora';
+      src: url('../fonts/arcamajora3-bold-webfont.woff2') format('woff2'), url('../fonts/arcamajora3-bold-webfont.woff') format('woff');
+      font-weight: normal;
+      font-style: normal;
+  } */
+  body {
+      font-family: 'Geogrotesque';
+      font-size: 14px;
+      line-height: 24px;
+      color: #323233;
+      font-weight: 400;
+      font-style: normal;
+      background-color: #fff;
+      -webkit-animation: fadein 4s;
+      -moz-animation: fadein 4s;
+      -ms-animation: fadein 4s;
+      -o-animation: fadein 4s;
+      animation: fadein 4s;
+  }
+  @keyframes fadein {
+      from {
+          opacity: 0;
+      }
+      to {
+          opacity: 1;
+      }
+  }
+  
+  @-moz-keyframes fadein {
+      /* Firefox */
+      from {
+          opacity: 0;
+      }
+      to {
+          opacity: 1;
+      }
+  }
+  
+  @-webkit-keyframes fadein {
+      /* Safari and Chrome */
+      from {
+          opacity: 0;
+      }
+      to {
+          opacity: 1;
+      }
+  }
+  
+  @-o-keyframes fadein {
+      /* Opera */
+      from {
+          opacity: 0;
+      }
+      to {
+          opacity: 1;
+      }
+  }
+  a,
+  .nav-tabs>li>a {
+      text-decoration: none;
+  }
+  
+  a:hover,
+  .nav-tabs>li>a:hover {
+      text-decoration: none;
+  }
+  
+  a:hover,
+  .nav-tabs>li>a:hover,
+  .btn {
+      -webkit-transition: all 0.5s ease;
+      -moz-transition: all 0.5s ease;
+      -ms-transition: all 0.5s ease;
+      transition: all 0.5s ease;
+  }
+  
+  a:focus {
+      outline: none;
+  }
+  
+  h1,
+  .h2,
+  .h3,
+  .h4,
+  .h5,
+  .h6,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+      margin: 10px 0px;
+  }
+  
+  li {
+      line-height: 20px;
+  }
+  
+  p {
+      font-size: 14px;
+      font-weight: normal;
+      line-height: 30px;
+      margin-bottom: 10px;
+  }
+  
+  ul,
+  ol {
+      margin: 0px;
+      padding: 0px;
+      list-style: none;
+  }
+  
+  h1,
+  h2 {
+      line-height: 35px;
+  }
+  
+  h1 {
+      font-size: 32px;
+      line-height: 40px;
+  }
+  
+  h2 {
+      font-size: 42px;
+  }
+  
+  h3 {
+      font-size: 22px;
+  }
+  
+  h4 {
+      font-size: 16px;
+  }
+  
+  h5 {
+      font-size: 14px;
+  }
+  
+  h6 {
+      font-size: 11.9px;
+  }
+  
+  .clear {
+      clear: both;
+  }
+  
+  .center,
+  .center-responsive img,
+  .center img,
+  .center-responsive img img,
+  .center-responsive {
+      text-align: center;
+  }
+  
+  .center-responsive img {
+      margin: 0px auto;
+  }
+  
+  .position-relative {
+      position: relative;
+  }
+  
+  .cn_item i {
+      display: inline-block;
+      margin-right: 0px;
+      margin-top: 0px;
+      padding: 0px;
+      position: relative;
+      text-align: center;
+      top: 0;
+      vertical-align: middle;
+  }
+  .transition-all {
+      -webkit-transition: all 300ms ease 0s;
+      -moz-transition: all 300ms ease 0s;
+      -ms-transition: all 300ms ease 0s;
+      transition: all 300ms ease 0s;
+  }
+  
+  .float-right-right {
+      float: right;
+  }
+  
+  .full-width-float,
+  .float-left-left {
+      float: left;
+  }
+  
+  .full-width-inblocks {
+      display: inline-block;
+  }
+  
+  .full-width-blocks {
+      display: block;
+  }
+  
+  .full-width-float,
+  .full-width-inblocks,
+  .full-width-blocks {
+      width: 100%;
+  }
+  
+  .float-off {
+      float: none !important;
+  }
+  
+  .white-color {
+      color: #fff;
+  }
+  
+  .blue-color {
+      color: #09bce8 !important;
+  }
+  
+  .red-color {
+      color: #f05154 !important;
+  }
+  /*
+  =======================================================================
+    dropdown-menu
+  =======================================================================
+  */
+  
+  /* .dropdown-menu.dropdown-menu-md {
+      width: 220px;
+  }
+  
+  .dropdown-menu.dropdown-menu-lg {
+      width: 271px;
+  }
+  
+  .dropdown .dropdown-menu,
+  .btn-group .dropdown-menu {
+      display: block;
+      opacity: 0;
+      transform: scale(0);
+  }
+  
+  .dropdown .dropdown-menu.pull-right,
+  .bootstrap-select .dropdown-menu.pull-right,
+  .btn-group .dropdown-menu.pull-right,
+  .dropdown .dropdown-menu.dropdown-menu-right,
+  .bootstrap-select .dropdown-menu.dropdown-menu-right,
+  .btn-group .dropdown-menu.dropdown-menu-right {
+      transform-origin: right top 0;
+  }
+  
+  .dropdown.open .dropdown-menu,
+  .dropup.open .dropdown-menu,
+  .bootstrap-select.open .dropdown-menu,
+  .btn-group.open .dropdown-menu {
+      opacity: 1;
+      transform: scale(1);
+  } */
+  
+  .open>a,
+  .open>a:hover {
+      outline: none;
+  }
+  
+  .dropdown-menu {
+      backface-visibility: hidden;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+      margin-top: 5px;
+      transition: all 250ms ease 0s;
+      -webkit-transition: all 250ms ease 0s;
+      border: none;
+  }
+  
+  
+  /*
+  =======================================================================
+    dropdown-menu end
+  =======================================================================
+  */
+  /*
+  =======================================================================
+    main
+  =======================================================================
+  */
+  
+  #main {
+      position: relative;
+      margin-left: 80px;
+  }
+  #report_main {
+      position: relative;
+      margin-left: 20px;
+  }
+  #graph_loading {
+      margin-left: 238px;
+      margin-top: 83px;
+  }
+  @media (max-width: 767px) {
+      #graph_loading {
+          margin-left: 157px;
+          margin-top: 83px;
+      }
+  }
+  
+  .map-full-show {
+      height: 100%;
+      width: 100%;
+      display: block;
+      position: absolute;
+      top: 0px;
+      left: 0px;
+      bottom: 0px;
+  }
+  
+  .map-full-show img {
+      width: 100%;
+  }
+  
+  @media (max-width: 767px) {
+      #main {
+          margin-left: 0px;
+      }
+  }
+  
+  
+  /*
+  =======================================================================
+    main end
+  =======================================================================
+  */
+  #trafficToggle {
+      width: 30px;
+      height: 30px;
+      z-index: 999999999;
+      position: absolute;
+      right: 4px;
+      background: white;
+      padding: 1px;
+      top: 3px;
+  }
+  
+  .trafficToggleDiv {
+      width: 38px;
+      height: 38px;
+      position: absolute;
+      right: -2px;
+      bottom: 123px;
+      background-color: #ffffff;
+      border-radius: 2px;
+      cursor: pointer;
+  }
+  
+  #satelliteToggle {
+      width: 30px;
+      position: absolute;
+      right: 4px;
+      bottom: 4px;
+  }
+  
+  .satelliteToggleDiv {
+      width: 38px;
+      height: 38px;
+      position: absolute;
+      right: -2px;
+      bottom: 75px;
+      background-color: #ffffff;
+      cursor: pointer;
+      border-radius: 2px;
+  }
+  
+  a[href^="http://maps.google.com/maps"] {
+      display: none !important
+  }
+  
+  a[href^="https://maps.google.com/maps"] {
+      display: none !important
+  }
+  
+  .gmnoprint a,
+  .gmnoprint span,
+  .gm-style-cc {
+      display: none;
+  }
+  
+  .gmnoprint div,
+  #map .gm-style>.gmnoprint>.gmnoprint div[title="Zoom in"]:not() {
+      background: none !important;
+  }
+  
+  #map .gm-style>.gmnoprint>.gmnoprint div[title="Zoom in"] {
+      background: url(images/zoom_in.png) no-repeat center center !important;
+      background-color: #ffffff !important
+  }
+  
+  .pointerAdd {
+      cursor: pointer !important;
+  }
+  
+  .tooltip-inner {
+      max-width: 400px;
+      white-space: nowrap;
+  }
+  
+  .sprite-arrow {
+      background-image: url(../images/sprite-arrow.png) !important;
+      background-repeat: no-repeat;
+      width: 12px;
+      height: 23px;
+  }
+  
+  .rightarrow-icon {
+      background-position: 0px 0px;
+  }
+  
+  .leftarrow-icon {
+      background-position: -12px 0px;
+  }
+  
+  .strip-box-arrow-left {
+      position: absolute;
+      right: 21px;
+      top: 19px;
+      cursor: pointer;
+  }
+  
+  .strip-box-arrow-right {
+      position: absolute;
+      left: 26px;
+      top: 7px;
+      cursor: pointer;
+      background: rgba(255, 255, 255, .95);
+      padding: 18px;
+      box-shadow: 0 0px 2px rgba(0, 0, 0, .11);
+  }
+  
+  .box-popover-player {
+      opacity: 1;
+      transition: all 0.5s ease;
+      -webkit-transition: all 0.5s ease;
+      position: absolute;
+      top: 51px;
+      left: 29px;
+      z-index: 10;
+      padding: 11px 14px 0px;
+      background-color: rgba(255, 255, 255, .95);
+      -webkit-background-clip: padding-box;
+      background-clip: padding-box;
+      box-shadow: 0 0px 2px rgba(0, 0, 0, .11);
+  }
+  
+  .player-control-play-pause {
+      background: #95c11f;
+      width: 36px;
+      height: 36px;
+      border-radius: 100%;
+      text-align: center;
+      line-height: 36px;
+      margin-top: 3px;
+  }
+  
+  .player-control-play-pause .fa {
+      color: #fff;
+      font-size: 16px;
+      text-align: center;
+      line-height: 36px;
+      position: relative;
+      left: 0px;
+      cursor: pointer;
+  }
+  
+  .player-control-play-pause.track-pause .fa-play:before {
+      content: "\f04c";
+  }
+  
+  .player-track {
+      border-right: 1px solid #d7d7d7;
+      padding: 10px 21px 8px 21px;
+      width: 46%;
+  }
+  
+  .player-control-track .track-time {
+      margin: 0px 21px;
+      position: relative;
+      top: -6px;
+      text-align: center;
+  }
+  
+  .player-control-track .track-time span {
+      display: block;
+      font-size: 12px;
+      font-weight: 500;
+      line-height: 17px;
+  }
+  
+  .track-time .text-secondary {
+      font-size: 20px !important;
+  }
+  
+  .player-control-track {
+      padding: 8px 21px;
+  }
+  
+  .player-control-track .previous-track,
+  .player-control-track .forward-track {
+      cursor: pointer;
+  }
+  
+  .player-control-track .previous-track .fa,
+  .player-control-track .forward-track .fa {
+      color: #646464;
+  }
+  
+  .player-control-track .previous-track .tooltip-inner,
+  .player-control-track .forward-track .tooltip-inner {
+      padding: 1px 5px;
+      color: #e93380;
+      background-color: #fff;
+      border-radius: 0px;
+      border: 1px solid #ededed;
+  }
+  
+  .player-control-track .previous-track .tooltip.top .tooltip-arrow,
+  .player-control-track .forward-track .tooltip.top .tooltip-arrow {
+      display: none;
+  }
+  
+  .player-track .slider.slider-horizontal {
+      width: 100%;
+  }
+  
+  .player-track .slider.slider-horizontal .slider-track {
+      height: 4px;
+  }
+  
+  .player-track .slider-track-low,
+  .slider-track-high {
+      background: #efeeec;
+  }
+  
+  .player-track .slider-selection {
+      background: #e93380;
+      background-image: none;
+      box-shadow: none;
+  }
+  
+  .player-track .slider-handle {
+      top: -2px;
+      width: 17px;
+      height: 18px;
+      border: 1px solid #bab5af;
+      background-color: #fff;
+      background-image: none;
+      box-shadow: 0 0px 4px rgba(0, 0, 0, .13);
+  }
+  
+  @media (max-width: 767px) {
+      .strip-box-arrow-right {
+          left: 0px;
+      }
+      .padd-ad-left {
+          padding-left: 0px;
+      }
+  }
+  
+  @media (max-width: 350px) {
+      .player-track {
+          padding: 8px 12px;
+      }
+      .player-control-track {
+          padding: 8px 12px;
+      }
+      .userdetail-box-tabs .nav-tabs>li {
+          margin-right: 24px;
+      }
+  }
+  
+  @media (min-width: 600px) and (max-width: 767px) {
+      .player-track {
+          width: 64%;
+      }
+  }
+  
+  
+    </style>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+    <!--
+      This HTML file is a template.
+      If you open it directly in the browser, you will see an empty page.
+
+      You can add webfonts, meta tags, or analytics to this file.
+      The build step will place the bundled scripts into the <body> tag.
+
+      To begin the development, run `npm start` or `yarn start`.
+      To create a production bundle, use `npm run build` or `yarn build`.
+    -->
+  </body>
+</html>

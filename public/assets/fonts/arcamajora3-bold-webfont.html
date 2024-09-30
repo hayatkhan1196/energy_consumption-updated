@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html ng-app="frontEnd">
+
+
+<!-- Mirrored from fleet.zong.com.pk/Corporate/assets/fonts/arcamajora3-bold-webfont.woff2 by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 May 2020 16:48:34 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <base ></base>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Fleet Management</title>
+    <link rel="icon" type="image/x-icon" href="../../../assets/images/favicon.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../../../lib/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../load_directly/default.css">
+    <!-- refresh style set by faseeh  20.Mar 2020-->
+    <span ng-if="!linkstyle">
+        <link rel="stylesheet" href="../load_directly/style.css"/>
+    </span>
+    <span ng-if="siteTheme==1">
+        <link rel="stylesheet" href="../load_directly/style-fms.css">
+    </span>
+    <span ng-if="siteTheme==2">
+        <link rel="stylesheet" href="../load_directly/style-tryp.css">
+    </span>
+    <span ng-if="linkstyle">
+        <link rel="stylesheet" ng-href="{{linkstyle}}"/>
+    </span> 
+    <link rel="stylesheet" ng-href="{{corporateonly}}">
+    <span ng-if="siteTheme==1">
+        <link rel="stylesheet" href="../load_directly/custom-fms.css">
+    </span>
+    <span ng-if="siteTheme==2">
+        <link rel="stylesheet" href="../load_directly/custom-tryp.css">
+    </span>  
+    <link rel="stylesheet" href="../load_directly/custom-all.css">
+    <link rel="stylesheet" href="../../../lib/angular-moment-picker/dist/angular-moment-picker.css">
+    <link rel="stylesheet" href="../load_directly/jquery.mCustomScrollbar.min.css">
+    <link rel="stylesheet" href="../load_directly/owl.carousel.css">
+    <link rel="stylesheet" href="../load_directly/owl.theme.css">
+    <link rel="stylesheet" href="../load_directly/owl.transitions.css">
+    <link rel="stylesheet" href="../load_directly/bootstrap-select.min.css">
+    <link rel="stylesheet" href="../../../lib/ng-dialog/css/ngDialog-theme-default.min.css">
+    <link rel="stylesheet" href="../../../lib/ng-dialog/css/ngDialog-theme-plain.css" />
+    <link rel="stylesheet" href="../../../lib/ng-dialog/css/ngDialog.css">
+    <link rel="stylesheet" href="../../../lib/fullcalendar/dist/fullcalendar.css">
+    <link rel="stylesheet" href="../../../lib/components-font-awesome/css/font-awesome.min.css">
+    <!-- <link rel="stylesheet" href="Corporate/assets/css/bootstrap-slider.css">
+        <link rel="stylesheet" href="Corporate/assets/css/build.css">  -->
+    <script src="../../../lib/jquery/dist/jquery.min.js"></script>
+    <script src="../../../lib/angular/angular.js"></script>
+    <script src="../../../lib/angular-cookie/angular-cookie.min.js"></script>
+
+     <!-- Translation added by faseeh-->
+     <script src="../../../assets/js/translation/angular-cookies.min.js"></script>
+     <script src="../../../assets/js/translation/angular-translate.min.js"></script>
+     <script src="../../../assets/js/translation/angular-sanitize.min.js"></script>
+     <script src="../../../assets/js/translation/angular-translate-storage-cookie.min.js"></script>
+     <!--Translation-->
+    <script src="../../../lib/angular-ui-router/release/angular-ui-router.min.js"></script>
+    <script src="../../../lib/angular-ui-router/release/stateEvents.min.js"></script>
+    <script src="../../../lib/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="../../../assets/js/dirPagination.min.js"></script>
+    <script src="../../../lib/moment/min/moment.min.js"></script>
+    <script src="../../../lib/moment/min/moment-with-locales.min.js"></script>
+    <script src="../../../lib/angular-sanitize/angular-sanitize.min.js"></script>
+    <script src="../../../lib/angular-moment-picker/dist/angular-moment-picker.min.js"></script>
+    <script src="../../../lib/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+    <script src="../../../lib/ng-file-upload/ng-file-upload.min.js"></script>
+    <script src="../../../lib/ng-file-upload/ng-file-upload-shim.min.js"></script>
+    <script src="../../../lib/ng-dialog/js/ngDialog.min.js"></script>
+    <script src="../../../lib/pdfmake/build/pdfmake.min.js"></script>
+    <script src="../../../lib/pdfmake/build/vfs_fonts.js"></script>
+    <script src="../../../lib/fullcalendar/dist/fullcalendar.min.js"></script>
+    <script src="../../../lib/at-table/dist/angular-table.min.js"></script>
+    
+    <script src="../load_directly/bootstrap-slider.min.js"></script>
+    <script src="../load_directly/b-slider.js"></script>
+    <script src="../load_directly/jquery.mCustomScrollbar.min.js"></script>
+    <script src="../load_directly/ngMCustomScrollBar.js"></script>
+    <script src="../load_directly/jquery.tempgauge.js"></script>
+    <script src="../load_directly/smooth-scroll.min.js"></script>
+    <script src="../load_directly/ng-csv.min.js"></script>
+    <!-- <script type="text/javascript" src="https://www.google.com/jsapi"></script> -->
+    <script type="text/javascript" src="../js/socket.io.js"></script>
+    <script src="../../../../maps.googleapis.com/maps/api/js895a?key=AIzaSyAYOSagGu0Cov4nDXACNHsbroj-a6xBlvw&amp;libraries=drawing,places"></script>
+    <script type="text/javascript" src="../../../../api.map.baidu.com/apicef8?v=2.0&amp;ak=38XkbdMoTDz7oYXNxnmcyvXLFNgIuDNv"></script>
+    <!-- <script src="Corporate/assets/js/demos.js"></script> -->
+    <script src="../js/custom-all.js"></script>
+    <!-- GAUGES -->
+    <script src="../load_directly/jqwidgets/jqxcore.js"></script>
+    <script src="../load_directly/jqwidgets/jqxdraw.js"></script>
+    <script src="../load_directly/jqwidgets/jqxgauge.js"></script>
+
+    <!-- OWL CAROUSEL -->
+    <script src="../load_directly/owl.carousel.min.js"></script>
+
+    <!-- HIGH CHARTS -->
+    <script src="../load_directly/highcharts/highcharts.js"></script>
+
+    <!-- BOOTSTRAP SELECT -->
+    <script src="../load_directly/bootstrap-select.min.js"></script>
+
+    <!-- Bootstrap Date/Time Picker -->
+    <script type="text/javascript" src="../../../lib/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
+    <link rel="stylesheet" href="../../../lib/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css" />
+
+    <!-- Date picker --> 
+    <script type="text/javascript" src="../../../assets/js/dateRange/moment.min.js"></script>
+    <script type="text/javascript" src="../../../assets/js/dateRange/daterangepicker.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../../assets/js/dateRange/daterangepicker.min.css" />
+
+    <!-- Date picker end-->
+
+    <script src="../../../js/modules/frontEnd.js"></script>
+    <script src="../../../dist/bundle.js"></script>
+</head>
+
+<body ng-controller="mainCtrl" id="MainCtrl">
+    <div>
+        <ui-view></ui-view>
+    </div>
+    <script ng-src="{{scriptlink?scriptlink:'Corporate/assets/load_directly/corpscripts.js'}}"></script>
+</body>
+
+
+<!-- Mirrored from fleet.zong.com.pk/Corporate/assets/fonts/arcamajora3-bold-webfont.woff2 by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 May 2020 16:48:34 GMT -->
+</html>

@@ -1,0 +1,85 @@
+.backImage {
+    background-image: url(../../assets/images/title_bg.5ddf6ead.png);
+    color: #fff;
+    height: 32px;
+    width: 16rem;
+    line-height: 32px;
+    text-align: left;
+    z-index: 9999;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+
+}
+
+.arrow {
+    background-image: url(../../assets/images/arrow.png);
+    height: 40px;
+    width: 40px;
+    animation: blink 4s ease-in-out infinite;
+
+}
+
+@keyframes blink {
+    0% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+.arrow :hover {
+    width: 200px;
+    height: 150px;
+    animation: blink 4s ease-in-out infinite;
+}
+
+
+.lightcon {
+    margin-bottom: 10px;
+}
+
+.infoIcon {
+    color: #eca014;
+    margin-left: 5px;
+
+}
+
+.left {
+    display: flex;
+    justify-content: space-evenly;
+
+    .name {
+        color: #fff;
+    }
+}
+
+.info {
+    margin-left: 2rem;
+}
+
+.itemBox {
+    display: flex;
+    justify-content: space-evenly;
+    // background-color: #d67a7a;
+}
+
+.square {
+    margin-top: 10px;
+    margin-left: 20px;
+}
+
+.lights {
+    color: #fff;
+}
+
+.zero {
+    margin-left: 10px;
+}

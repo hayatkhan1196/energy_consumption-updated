@@ -1,0 +1,111 @@
+/* MyForm.module.scss */
+
+.formContainer {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    margin: 40px;
+    margin-top: 8rem;
+    margin-left: 12rem;
+    width: 800px;
+    max-height: 40rem;
+    /* Set a maximum height for scrolling */
+    overflow-y: auto;
+
+    // background-color: #000435;
+    box-shadow: 0 0px 24px rgba(221, 221, 62, 1);
+    border-radius: 5px;
+
+    .formField {
+        margin: 10px 0;
+        display: flex;
+        flex-direction: column;
+        z-index: 9999;
+
+        label {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"],
+        input[type="time"] {
+            padding: 10px;
+            border-radius: 5px;
+            background-color: #000435;
+            color: #fff;
+            box-shadow: 0 0px 24px rgba(221, 221, 62, 1);
+
+        }
+    }
+
+    .dateRangeInput {
+        background-color: #000435;
+
+    }
+
+    .rdrCalendarWrapper .rdrDateRangeWrapper {
+        background-color: #300435;
+        /* Your desired background color */
+    }
+
+}
+
+.formContainer2 {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    margin: 40px;
+    margin-left: 12rem;
+    width: 800px;
+    max-height: 40rem;
+    /* Set a maximum height for scrolling */
+    overflow-y: auto;
+
+    // background-color: #000435;
+    box-shadow: 0 0px 24px rgba(221, 221, 62, 1);
+    border-radius: 5px;
+
+    .formField {
+        margin: 10px 0;
+        display: flex;
+        flex-direction: column;
+        z-index: 9999;
+
+        label {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"],
+        input[type="time"] {
+            padding: 10px;
+            border-radius: 5px;
+            background-color: #000435;
+            color: #fff;
+            box-shadow: 0 0px 24px rgba(221, 221, 62, 1);
+
+        }
+    }
+
+    .dateRangeInput {
+        background-color: #000435;
+
+    }
+
+    .rdrCalendarWrapper .rdrDateRangeWrapper {
+        background-color: #300435;
+        /* Your desired background color */
+    }
+        .customTableContainer {
+        background-color: #000435 /* Replace "yourColor" with the desired color code or name */
+        }
+.parent-class {
+    .css-11xur9t-MuiPaper-root-MuiTableContainer-root {
+        background-color: "#000435";
+    }
+}
+}
+
+// .css-11xur9t-MuiPaper-root-MuiTableContainer-root {
+//     background-color: "none";
+// }

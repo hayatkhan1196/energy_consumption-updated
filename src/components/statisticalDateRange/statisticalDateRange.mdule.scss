@@ -1,0 +1,25 @@
+.demoDatePicker {
+    display: flex;
+    width: 100%;
+    padding: 0;
+    flex-wrap: wrap;
+        margin-left: 200px;
+}
+
+.block {
+    padding: 30px 0;
+    text-align: center;
+    border-right: solid 1px #dcdfe6;
+    flex: 1;
+}
+
+.block:last-child {
+    border-right: none;
+}
+
+.demonstration {
+    display: block;
+    color: #909399;
+    font-size: 14px;
+    margin-bottom: 20px;
+}

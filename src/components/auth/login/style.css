@@ -1,0 +1,389 @@
+/*
+=======================================================================
+	login-section
+=======================================================================
+*/
+
+.admin-login-section {
+    background-image: url(../../../assets/images/admin-bg.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center top;
+    height: 100vh;
+    width: 100%;
+    display: table;
+    vertical-align: middle;
+}
+
+.admin-login-section-middle {
+    vertical-align: middle;
+    display: table-cell;
+}
+
+.admin-form-cent {
+    margin: 0px auto;
+    width: 475px;
+    padding-top: 20px;
+}
+
+.box-admin {
+    background: #fff;
+    border-bottom: 3px solid #8dc63f;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.12);
+    border-radius: 5px;
+    padding: 92px 50px;
+}
+
+.admin-loginform {
+    padding-top: 10px;
+}
+
+.logo-zfms,
+.trypk-logo-admin {
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+}
+
+.logo-zfms .logo {
+    background: url(../../../assets/images/SFT_Logo_short.png) no-repeat 0px 0px;
+    object-fit: contain;
+    width: 200px;
+    height: 200px;
+    
+    
+}
+
+.box-admin .user-sub-formpopup {
+    padding: 50px 0px 0px;
+}
+
+.trypk-logo-admin i {
+    background: url(../../../assets/images/SFT_Logo_short.png) no-repeat 0px 0px;
+    width: 166px;
+    height: 52px;
+}
+
+.zong-logo {
+    top: 39px;
+    right: 47px;
+    position: absolute;
+}
+
+.zong-logo i {
+    background: url(../../../assets/images/SFT_Logo_short.png) no-repeat 0px 0px;
+    width: 158px;
+    height: 50px;
+}
+
+.trypk-logo-admin {
+    margin: 57px 0px 57px;
+}
+
+.side-login-outer {
+    padding-top: 67px;
+    margin-left: 44px;
+}
+
+.side-login-inner {
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+.user-loginform {
+    margin-top: 149px;
+    margin-left: 60px;
+}
+
+.user-sub-form .fg-float {
+    position: relative;
+}
+
+.user-sub-form .fg-float .logicon {
+   position: relative;
+    left: 0px;
+}
+
+.user-sub-form .fg-float .logicon.cn_item i {
+    top: -4px;
+}
+
+.user-icon {
+    background-position: -41px -60px;
+}
+
+.lock-icon {
+    background-position: -61px -60px;
+}
+
+.user-sub-form .form-control {
+    height: 34px;
+    padding: 6px 12px 0px 0px;
+    font-size: 16px;
+    line-height: 1.42857143;
+    color: #555;
+    font-weight: 400;
+    background-color: transparent;
+    background-image: none;
+    border: 1px solid transparent;
+    border-bottom: 1px solid #d7d7d7;
+    box-shadow: none;
+    border-radius: 0px;
+}
+
+.user-sub-form select.form-control {
+    height: 34px;
+    padding: 0px 0px 0px 0px;
+}
+
+.user-sub-form .form-group {
+    margin-bottom: 20px;
+    margin-top: 15px;
+}
+
+.rule-define {
+    font-size: 12px;
+    text-transform: uppercase;
+    color: #acce4f;
+    font-weight: 600;
+    border: 1px solid #95c11f;
+    border-radius: 35px;
+    display: inline-block;
+    padding: 3px 10px;
+    cursor: pointer;
+}
+
+.user-sub-form .label-helper {
+    position: absolute;
+    opacity: 1;
+    -webkit-transition: .2s bottom, .2s opacity;
+    transition: .2s bottom, .2s opacity;
+    bottom: 14px;
+    left: 15px;
+    z-index: 1;
+    color: #c5c5c5;
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 0px;
+    pointer-events: none;
+}
+
+.user-sub-form .label-helper span {
+    color: #555;
+}
+
+.user-sub-form .lable-toggle+.label-helper {
+    bottom: 27px;
+    font-size: 14px;
+    line-height: 1;
+    opacity: 1;
+    padding: 0px 0px;
+}
+
+.user-sub-form .lable-toggle .form-control {
+    border-bottom: 2px solid #88c331;
+}
+
+.user-sub-form .lable-toggle+.label-helper span {
+    color: #88c331;
+}
+
+.user-sub-form .lable-toggle+.label-helper,
+.user-sub-form .lable-toggle-on+.label-helper {
+    bottom: 32px;
+    font-size: 14px;
+    line-height: 1;
+    opacity: 1;
+    padding: 0px 0px;
+}
+
+.user-sub-form .btn {
+    padding: 10px 30px;
+    font-size: 15px;
+    text-transform: uppercase;
+    border-radius: 35px;
+}
+
+.user-sub-form .btn-default {
+    background-color: #fff;
+    border-color: transparent !important;
+    color: #727272;
+}
+
+.user-sub-form .btn-default:hover {
+    background-color: #f5f3f3;
+}
+
+.user-sub-formpopup .btn+.btn {
+    margin-left: 12px;
+}
+
+.btn-submit .btn-title {
+    font-size: 13px;
+    color: #7e7d7d;
+    font-weight: 500;
+    display: inline-block;
+    margin-top: 11px;
+}
+
+.dropdownlable-select {
+    margin-bottom: 11px !important;
+}
+
+@media (max-width: 767px) {
+    .admin-form-cent {
+        width: 100%;
+    }
+    .login-section {
+        background-position: 60% 160px;
+    }
+    .zong-logo {
+        top: 19px;
+    }
+    .side-login-outer {
+        padding-top: 87px;
+        margin-left: 15px;
+        margin-right: 15px;
+    }
+    .user-loginform {
+        margin-top: 43px;
+        margin-left: 40px;
+    }
+    .trypk-logo-admin {
+        bottom: 0px;
+        left: 0px;
+        background: rgba(255, 255, 255, 0.77);
+        padding: 2px 0px 3px;
+        width: 100%;
+    }
+    .trypk-logo img {
+        margin: 0px auto;
+    }
+    .user-sub-form .form-group {
+        margin-bottom: 0px;
+        margin-top: 0px;
+    }
+    .user-sub-form .fg-float {
+        margin: 15px 0px 25px;
+    }
+    .logo-zfms .logo {
+        background: url(../../../assets/images/SFT_Logo_short.png) no-repeat 0px 0px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        object-fit: contain;
+    }
+    .box-admin .user-sub-formpopup {
+        padding: 10px 0px 0px;
+    }
+}
+
+@media (max-width: 320px) {
+    .login-section {
+        background-position: 69% 160px;
+    }
+    .logo-zfms img {
+        width: 250px;
+        margin: 0px auto;
+    }
+    .user-loginform {
+        margin-top: 30px;
+    }
+    .user-sub-form .label-helper {
+        font-size: 14px;
+    }
+    .user-sub-form .form-group {
+        margin-bottom: 25px;
+    }
+}
+
+@media (min-width: 560px) and (max-width: 640px) {
+    .trypk-logo {
+        position: relative;
+    }
+    .btn-submit .btn-title {
+        color: #8dc63f;
+    }
+}
+
+@media (min-width: 650px) and (max-width: 767px) {
+    .side-login-outer {
+        padding-top: 47px;
+        margin-left: 20px;
+    }
+    .user-loginform {
+        margin-top: 39px;
+        margin-left: 40px;
+    }
+    .user-sub-form .form-group {
+        margin-bottom: 20px;
+    }
+    .btn-submit .btn-title {
+        color: #8dc63f;
+    }
+    .trypk-logo {
+        bottom: 8px;
+        left: 20px;
+        background: transparent;
+        padding: 0px;
+        width: auto;
+        position: absolute;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+    .user-loginform {
+        margin-top: 79px;
+    }
+}
+
+
+/*
+=======================================================================
+	login-section end
+=======================================================================
+*/
+.logn-btn {
+    background-color: #179260;
+    border-color: #f72194;
+    color: #fff;
+    text-transform: uppercase;
+    /* font-family: 'arca_majora'; */
+    border-radius: 35px;
+}
+.btn {
+    display: inline-block;
+    margin-bottom: 0;
+    font-weight: 400;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    background-image: none;
+    border: 1px solid transparent;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    border-radius: 4px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+button {
+    overflow: visible;
+}
+button, input, optgroup, select, textarea {
+    color: inherit;
+    font: inherit;
+    margin: 0;
+}
+.user-sub-formpopup .btn {
+    padding: 8px 18px;
+    box-shadow: 0px 0px 18px rgba(0, 0, 0, .15);
+}
+.user-sub-formpopup .label-helper {
+    margin-bottom: 5px;
+}
